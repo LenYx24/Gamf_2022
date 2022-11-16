@@ -18,6 +18,10 @@ namespace feladat3
         class NumberPyramid
         {
             List<Row> rows;
+            public NumberPyramid()
+            {
+                rows = new();
+            }
             public void SetFirstRowFromFile()
             {
                 string[] text = File.ReadAllLines("szamok7.txt");
@@ -56,7 +60,7 @@ namespace feladat3
             {
                 return rows[index].Nums.Sum();
             }
-            public List<Row> Rows { get; }
+            public List<Row> Rows { get { return rows; } }
             public int LastRowsNumber { get { return rows[^1].Nums[0]; } } // Legfelső (utolsó) sor száma
         }
         static void Main(string[] args)

@@ -92,7 +92,7 @@ namespace feladat2
             darab = 0;
             foreach (Autó Gépjármű in Autók)
                 for (int i = 0; i < Gépjármű.ÚtAzonosítók.Count - 1; i++)
-                    if (Gépjármű.Kihajtás_Időpontok[i] > Gépjármű.Behajtás_Időpontok[i + 1])
+                    if (Gépjármű.ÚtAzonosítók[i] != Gépjármű.ÚtAzonosítók[i + 1] && Gépjármű.Kihajtás_Időpontok[i] > Gépjármű.Behajtás_Időpontok[i + 1])
                         darab++;
             Console.WriteLine($"c) {darab}");
         }

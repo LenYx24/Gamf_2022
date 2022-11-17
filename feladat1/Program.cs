@@ -6,7 +6,7 @@ namespace feladat1
 {
     internal class Program
     {
-        static string szamok = "";
+        static string nums = "";
         static void Main(string[] args)
         {
             ReadIn();
@@ -17,9 +17,9 @@ namespace feladat1
 
         static void ReadIn() {
           try {
-            StreamReader r = new("szamok.txt");
+            StreamReader r = new("nums.txt");
 
-            szamok = r.ReadLine();
+            nums = r.ReadLine();
             r.Close();
           } catch (IOException e) {
             Console.WriteLine(e.Message);
@@ -28,7 +28,7 @@ namespace feladat1
 
         static void Zeros() {
           int db = 0;
-          foreach(char c in szamok) {
+          foreach(char c in nums) {
             if (c == '0') db++;
           }
           Console.WriteLine($"a. feladat) {db} db 0 szám van a fájlban.");
@@ -36,17 +36,17 @@ namespace feladat1
 
         static List<int> diff_nums = new();
         static void FourDigitNums() {
-          for (int i = 0; i < szamok.Length-3; i++) {
-            int szam = int.Parse(szamok.Substring(i, 4));
-            if (!diff_nums.Contains(szam) && szam.ToString().Length == 4) diff_nums.Add(szam);
+          for (int i = 0; i < nums.Length-3; i++) {
+            int num = int.Parse(nums.Substring(i, 4));
+            if (!diff_nums.Contains(num) && num.ToString().Length == 4) diff_nums.Add(num);
           }
           Console.WriteLine($"b. feladat) {diff_nums.Count} db különböző négyjegyű szám van a fájlban.");
         }
 
         static void PrimeNums() {
           int primek = 0;
-          foreach (int szam in diff_nums) {
-            if (isPrime(szam)) primek++;
+          foreach (int num in diff_nums) {
+            if (isPrime(num)) primek++;
           }
           Console.WriteLine($"c. feladat) {primek} db négyjegyű prím szám van a fájlban.");
         }

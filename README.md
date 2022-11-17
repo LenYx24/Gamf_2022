@@ -4,6 +4,9 @@ https://gamf.uni-neumann.hu/programozo-verseny-neumann-emlekere-1-fordulo/
 
 Eredmények:
 1. feladat:
+a) 11
+b) 86
+c) 8
 2. feladat:
 3. feladat:
 a) 8

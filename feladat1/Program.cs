@@ -17,7 +17,7 @@ namespace feladat1
 
         static void ReadIn() {
           try {
-            StreamReader r = new("nums.txt");
+            StreamReader r = new("../../../szamok.txt");
 
             nums = r.ReadLine();
             r.Close();

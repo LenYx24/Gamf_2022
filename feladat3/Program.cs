@@ -24,7 +24,7 @@ namespace feladat3
             }
             public void SetFirstRowFromFile()
             {
-                string[] text = File.ReadAllLines("szamok7.txt");
+                string[] text = File.ReadAllLines("../../../szamok7.txt");
                 List<int> nums = text.ToList().ConvertAll(x => Convert.ToInt32(x));
                 Row firstRow = new(nums);
                 rows.Add(firstRow);

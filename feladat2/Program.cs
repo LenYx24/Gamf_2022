@@ -2,6 +2,8 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace feladat2
 {
@@ -91,23 +93,79 @@ namespace feladat2
 
             darab = 0;
             Console.WriteLine("C feladat tesztek:\n------------------");
+            List<Autó> hibasAutok = new();
             foreach (Autó Gépjármű in Autók)
             {
                 for (int i = 0; i < Gépjármű.ÚtAzonosítók.Count - 1; i++)
                 {
                     if (Gépjármű.ÚtAzonosítók[i] != Gépjármű.ÚtAzonosítók[i + 1] && Gépjármű.Kihajtás_Időpontok[i] > Gépjármű.Behajtás_Időpontok[i + 1])
                     {
-                        Console.WriteLine($"{i}");
+                        hibasAutok.Add(Gépjármű);
+                        Console.WriteLine(new String('-',10));
                         Console.WriteLine($"\tRendszám: {Gépjármű.Rendszám}");
-                        Console.WriteLine($"\tBe_idő: {Gépjármű.Behajtás_Időpontok[i]} Ki_idő: {Gépjármű.Kihajtás_Időpontok[i]}");
-                        Console.WriteLine($"\tBe_idő: {Gépjármű.Behajtás_Időpontok[i+1]} Ki_idő: {Gépjármű.Kihajtás_Időpontok[i+1]}");
-                        Console.WriteLine($"\tÚtszakasz_ID1: {Gépjármű.ÚtAzonosítók[i]}");
-                        Console.WriteLine($"\tÚtszakasz_ID2: {Gépjármű.ÚtAzonosítók[i+1]}");
+                        for(int j = 0; j < Gépjármű.Behajtás_Időpontok.Count; j++)
+                        {
+                            string s = j == i || j == i+1 ? "  <--" : "";
+                            Console.WriteLine($"{Gépjármű.Behajtás_Időpontok[j]} : {Gépjármű.Kihajtás_Időpontok[j]}" + s);
+                        }
+                        Console.WriteLine(new String('-', 10));
+                        //Gépjármű.Behajtás_Időpontok.ForEach(x=>Console.WriteLine($"Behajtási: {x}"));
+                        //Gépjármű.Kihajtás_Időpontok.ForEach(x=>Console.WriteLine($"Kihajtási: {x}"));
+                        //Console.WriteLine($"\tBe_idő: {Gépjármű.Behajtás_Időpontok[i]} Ki_idő: {Gépjármű.Kihajtás_Időpontok[i]}");
+                        //Console.WriteLine($"\tBe_idő: {Gépjármű.Behajtás_Időpontok[i+1]} Ki_idő: {Gépjármű.Kihajtás_Időpontok[i+1]}");
+                        //Console.WriteLine($"\tÚtszakasz_ID1: {Gépjármű.ÚtAzonosítók[i]}");
+                        //Console.WriteLine($"\tÚtszakasz_ID2: {Gépjármű.ÚtAzonosítók[i+1]}");
                         darab++;
                     }
                 }
             }
             Console.WriteLine($"c) {darab}");
+            //int k = megoldas2(Autók,hibasAutok);
+            //Console.WriteLine($"c (második megoldási módszer): {k}");
+            // másik megoldás BUG:
+            // A megoldás kettő megszámolja hibásan azt is, hogyha éfjél után hajt ki és éfjél előtt hajt be, mert be > ki
         }
+        //class IdőBeírás
+        //{
+        //    public TimeSpan Ido;
+        //    public bool Tipus; // false behajtási, true kihajtási
+        //    public IdőBeírás(TimeSpan ido, bool tipus)
+        //    {
+        //        Ido = ido;
+        //        Tipus = tipus;
+        //    }
+        //}
+        //static int megoldas2(List<Autó> Autók)
+        //{
+        //    int s = 0;
+        //    foreach(Autó a in Autók)
+        //    {
+        //        List<IdőBeírás> idobeirasok = new();
+        //        a.Behajtás_Időpontok.ForEach(x => idobeirasok.Add(new(x, false)));
+        //        a.Kihajtás_Időpontok.ForEach(x => idobeirasok.Add(new(x, true)));
+        //        idobeirasok = idobeirasok.OrderBy(x => x.Ido).ToList();
+        //        bool vane = false;
+        //        for(int i = 0; i < idobeirasok.Count; i++)
+        //        {
+        //            if(i%2 == 0 && idobeirasok[i].Tipus == true || i % 2 == 1 && idobeirasok[i].Tipus == false)
+        //            {
+        //                vane = true;
+        //            }
+                    
+        //        }
+        //        if (vane)
+        //        {
+        //            s++;
+        //            Console.WriteLine(new String('-', 10));
+        //            Console.WriteLine($"\tRendszám: {a.Rendszám}");
+        //            for (int j = 0; j < a.Behajtás_Időpontok.Count; j++)
+        //            {
+        //                Console.WriteLine($"{a.Behajtás_Időpontok[j]} : {a.Kihajtás_Időpontok[j]}");
+        //            }
+        //            Console.WriteLine(new String('-', 10));
+        //        }
+        //    }
+        //    return s;
+        //}
     }
 }

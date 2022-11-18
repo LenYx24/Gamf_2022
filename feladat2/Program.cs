@@ -90,10 +90,23 @@ namespace feladat2
             }
 
             darab = 0;
+            Console.WriteLine("C feladat tesztek:\n------------------");
             foreach (Autó Gépjármű in Autók)
+            {
                 for (int i = 0; i < Gépjármű.ÚtAzonosítók.Count - 1; i++)
+                {
                     if (Gépjármű.ÚtAzonosítók[i] != Gépjármű.ÚtAzonosítók[i + 1] && Gépjármű.Kihajtás_Időpontok[i] > Gépjármű.Behajtás_Időpontok[i + 1])
+                    {
+                        Console.WriteLine($"{i}");
+                        Console.WriteLine($"\tRendszám: {Gépjármű.Rendszám}");
+                        Console.WriteLine($"\tBe_idő: {Gépjármű.Behajtás_Időpontok[i]} Ki_idő: {Gépjármű.Kihajtás_Időpontok[i]}");
+                        Console.WriteLine($"\tBe_idő: {Gépjármű.Behajtás_Időpontok[i+1]} Ki_idő: {Gépjármű.Kihajtás_Időpontok[i+1]}");
+                        Console.WriteLine($"\tÚtszakasz_ID1: {Gépjármű.ÚtAzonosítók[i]}");
+                        Console.WriteLine($"\tÚtszakasz_ID2: {Gépjármű.ÚtAzonosítók[i+1]}");
                         darab++;
+                    }
+                }
+            }
             Console.WriteLine($"c) {darab}");
         }
     }

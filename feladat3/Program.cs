@@ -60,6 +60,10 @@ namespace feladat3
             {
                 return rows[index].Nums.Sum();
             }
+            public void PrintRow(int i)
+            {
+                Console.WriteLine($"{i + 1}: {String.Join(" ", rows[i].Nums)}");
+            }
             public List<Row> Rows { get { return rows; } }
             public int LastRowsNumber { get { return rows[^1].Nums[0]; } } // Legfelső (utolsó) sor száma
         }
@@ -87,10 +91,11 @@ namespace feladat3
             Console.WriteLine($"b) A számpiramos legfelső sorában a {b} szám szerepel");
 
             // c rész
-            numberPyramid.PrintRowsInReverse();
             List<double> quotients = new();
             for (int i = 1; i < numberPyramid.Rows.Count; i++)
             {
+                numberPyramid.PrintRow(i);
+                numberPyramid.PrintRow(i-1);
                 double rowSums = Convert.ToDouble(numberPyramid.GetSumOfRowValues(i));
                 double aboveRowSums = numberPyramid.GetSumOfRowValues(i-1);
                 double quotient = rowSums / aboveRowSums;
@@ -99,10 +104,10 @@ namespace feladat3
             
             int c = quotients.Where(x => x > 1.5).Count();// Megszámolja hogy hány olyan hányados van amely értéke nagyobb 1,5nél
             Console.WriteLine($"c) {c} sor esetén lesz a hányados nagyobb 1,5-nél");
-            // TESZT
-            // Hányadosok kiírása
-            //Console.WriteLine("HÁNYADOSOK\n--------------");
-            //quotients.ForEach(x => Console.WriteLine(x));
+            //TESZT
+            //Hányadosok kiírása
+            Console.WriteLine("HÁNYADOSOK\n--------------");
+            quotients.ForEach(x => Console.WriteLine(x));
         }
     }
 }

@@ -8,7 +8,10 @@ a) 11
 b) 86
 c) 8
 2. feladat:
-3. feladat:
+a) 2
+b) 101
+c) 8
+4. feladat:
 a) 8
 b) 2770647
 c) 17

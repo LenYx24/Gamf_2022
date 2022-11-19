@@ -26,6 +26,7 @@ namespace feladat1
           }
         }
 
+        //Counting all the zeros in the string
         static void Zeros() {
           int db = 0;
           foreach(char c in nums) {
@@ -34,6 +35,7 @@ namespace feladat1
           Console.WriteLine($"a. feladat) {db} db 0 szám van a fájlban.");
         }
 
+        //Counting all the different four digit numbers in the string and saving it in a list for further operations
         static List<int> diff_nums = new();
         static void FourDigitNums() {
           for (int i = 0; i < nums.Length-3; i++) {
@@ -43,6 +45,7 @@ namespace feladat1
           Console.WriteLine($"b. feladat) {diff_nums.Count} db különböző négyjegyű szám van a fájlban.");
         }
 
+        //Checking which numbers present in the list is a prime number
         static void PrimeNums() {
           int primek = 0;
           foreach (int num in diff_nums) {
@@ -51,6 +54,7 @@ namespace feladat1
           Console.WriteLine($"c. feladat) {primek} db négyjegyű prím szám van a fájlban.");
         }
 
+        //This is a method for simplifying the code
         static bool isPrime(int num) {
           for (int i = 2; i < num / 2; i++) {
             if (num % i == 0) return false;

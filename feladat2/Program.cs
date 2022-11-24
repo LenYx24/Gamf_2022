@@ -96,30 +96,42 @@ namespace feladat2
             List<Autó> hibasAutok = new();
             foreach (Autó Gépjármű in Autók)
             {
+                bool vane = false;
                 for (int i = 0; i < Gépjármű.ÚtAzonosítók.Count - 1; i++)
                 {
                     if (Gépjármű.ÚtAzonosítók[i] != Gépjármű.ÚtAzonosítók[i + 1] && Gépjármű.Kihajtás_Időpontok[i] > Gépjármű.Behajtás_Időpontok[i + 1])
                     {
                         hibasAutok.Add(Gépjármű);
-                        Console.WriteLine(new String('-',10));
+
+                        Console.WriteLine(new String('-', 10));
                         Console.WriteLine($"\tRendszám: {Gépjármű.Rendszám}");
-                        for(int j = 0; j < Gépjármű.Behajtás_Időpontok.Count; j++)
+                        for (int j = 0; j < Gépjármű.Behajtás_Időpontok.Count; j++)
                         {
-                            string s = j == i || j == i+1 ? "  <--" : "";
+                            string s = j == i || j == i + 1 ? "  <--" : "";
                             Console.WriteLine($"{Gépjármű.Behajtás_Időpontok[j]} : {Gépjármű.Kihajtás_Időpontok[j]}" + s);
                         }
-                        Console.WriteLine(new String('-', 10));
+                        //Console.WriteLine(new String('-', 10));
                         //Gépjármű.Behajtás_Időpontok.ForEach(x=>Console.WriteLine($"Behajtási: {x}"));
                         //Gépjármű.Kihajtás_Időpontok.ForEach(x=>Console.WriteLine($"Kihajtási: {x}"));
                         //Console.WriteLine($"\tBe_idő: {Gépjármű.Behajtás_Időpontok[i]} Ki_idő: {Gépjármű.Kihajtás_Időpontok[i]}");
                         //Console.WriteLine($"\tBe_idő: {Gépjármű.Behajtás_Időpontok[i+1]} Ki_idő: {Gépjármű.Kihajtás_Időpontok[i+1]}");
                         //Console.WriteLine($"\tÚtszakasz_ID1: {Gépjármű.ÚtAzonosítók[i]}");
                         //Console.WriteLine($"\tÚtszakasz_ID2: {Gépjármű.ÚtAzonosítók[i+1]}");
-                        darab++;
                     }
+                    else vane = true;
+                }
+                if (vane)
+                {
+                    Console.WriteLine(new String('*', 10));
+                    Console.WriteLine($"\tRendszám: {Gépjármű.Rendszám}");
+                    for (int j = 0; j < Gépjármű.Behajtás_Időpontok.Count; j++)
+                    {
+                        Console.WriteLine($"{Gépjármű.Behajtás_Időpontok[j]} : {Gépjármű.Kihajtás_Időpontok[j]} --- {Gépjármű.ÚtAzonosítók[j]}");
+                    }
+                    Console.WriteLine(new String('*', 10));
                 }
             }
-            Console.WriteLine($"c) {darab}");
+            Console.WriteLine($"c) {hibasAutok.Count()}");
             //int k = megoldas2(Autók,hibasAutok);
             //Console.WriteLine($"c (második megoldási módszer): {k}");
             // másik megoldás BUG:

@@ -6,7 +6,7 @@ namespace Fordulo2
     {
         static void Main(string[] args)
         {
-            
+            Feladat2.Main2();
         }
     }
 }

@@ -94,6 +94,22 @@ namespace Fordulo2
                 }
                 Console.WriteLine(new String('-', 14));
             }
+            public bool AreThereStepsThatAreTheSame()
+            {
+                List<int> stepints = Steps.ConvertAll(x => x.RowColumn).ToList();
+                if (stepints.Count != stepints.Distinct().Count())
+                {
+                    return true;
+                }
+                else
+                {
+                    var st = stepints.OrderBy(x => x);
+                    string k = "";
+                    st.ToList().ForEach(x => k += $"{x} ");
+                    Console.WriteLine(k);
+                }
+                return false;
+            }
         }
         class Step
         {
@@ -143,6 +159,17 @@ namespace Fordulo2
                 if(t.StartingFieldPossibleAfterLastStep()) b++;
             }
             Console.WriteLine($"b) {b} olyan sor van a fájlban, ahol az utolsó lépés után a kezdő mező egy újabb lólépéssel elérhető");
+
+            //c
+            string codeRow = "";
+            foreach (Table t in tables)
+            {
+                string res = "1";
+                if (t.AreThereStepsThatAreTheSame()) res = "0";
+
+                codeRow += res;
+            }
+            Console.WriteLine($"c) Kódsor: {codeRow}");
         }
     }
 }

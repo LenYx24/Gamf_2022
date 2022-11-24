@@ -22,7 +22,7 @@ namespace Fordulo2
         };
         class Table
         {
-            List<Step> Steps = new();
+            public List<Step> Steps = new();
             public Table(string[] steps)
             {
                 foreach(string step in steps)
@@ -58,22 +58,47 @@ namespace Fordulo2
             }
             public bool StartingFieldPossibleAfterLastStep()
             {
-                int[] firstStep = Steps[0].RowColumnArr;
+                string[,] arr = new string[6, 6];
+                int[] firstStep = Steps[0].RowColumnArrAsIndices;
+                arr[firstStep[0], firstStep[1]] = "F";
+                int[] startingPoint = Steps[^1].RowColumnArrAsIndices;
+                arr[startingPoint[0], startingPoint[1]] = "S";
+                bool isThere = false;
                 for (int i = 0; i < HorseSteps.GetLength(0); i++)
                 {
-                    int[] lastStep = Steps[i].RowColumnArr;
-                    lastStep[0] += HorseSteps[i, 0];
-                    lastStep[1] += HorseSteps[i, 1];
-                    if (String.Join("", firstStep) == String.Join("", lastStep)) return true;
+                    int[] lastStep = Steps[^1].AddStep(i).RowColumnArrAsIndices;
+                    if (lastStep[0] == -1 || lastStep[1] == -1) continue;
+                    arr[lastStep[0], lastStep[1]] = "P";
+                    if (String.Join("", firstStep) == String.Join("", lastStep))
+                    {
+                        arr[lastStep[0], lastStep[1]] = "X";
+                        isThere = true;
+                    }
                 }
-                return false;
+                PossibleMoves(arr);
+                return isThere;
+            }
+            public void PossibleMoves(string[,] arr)
+            {
+                Console.WriteLine("  1|2|3|4|5|6");
+                for(int i = 0; i < 6; i++)
+                {
+                    Console.WriteLine(new String('-',14));
+                    string qwe = "";
+                    for(int j = 0; j < 6; j++)
+                    {
+                        if (arr[i,j] == null) qwe += $" |";
+                        else qwe += $"{arr[i,j]}|";
+                    }
+                    Console.WriteLine($"{i + 1}|{qwe}");
+                }
+                Console.WriteLine(new String('-', 14));
             }
         }
         class Step
         {
             int row;
             int column;
-            int rowcolumn;
             public Step(string xy)
             {
                 row = Convert.ToInt32(xy.Substring(0, 1));
@@ -83,6 +108,15 @@ namespace Fordulo2
             public int Column { get { return column; } }
             public int RowColumn { get { return Convert.ToInt32(row.ToString() + column.ToString()); } }
             public int[] RowColumnArr { get { return new int[] { row, column }; } }
+            public int[] RowColumnArrAsIndices { get { return new int[] { row-1, column-1 }; } }
+            public Step AddStep(int i)
+            {
+                int r1 = row + HorseSteps[i, 0];
+                int c1 = column + HorseSteps[i, 1];
+                if (r1 < 1 || r1 > 6 || c1 < 1 || c1 > 6)
+                    return new Step("00");
+                return new Step($"{r1}{c1}");
+            }
         }
         public static void Main2()
         {

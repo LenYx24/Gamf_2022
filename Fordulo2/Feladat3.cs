@@ -45,12 +45,12 @@ namespace Fordulo2
 
       public static void Repeating() {
         int n = int.Parse(nums[0]);
-        double rem = n % 317 < 317 ? ((n % 317)*10) : n % 317;
+        double rem = (n % 317)*10;
         string str = "";
 
         for (int i = 0; i < 1000; i++) {
           str += Math.Floor(rem / 317);
-          rem = rem % 317 < 317 ? ((rem % 317)*10) : rem % 317;
+          rem = (rem % 317)*10;
         }
         string[] strs = str.Split(str.Substring(0, 4));
 

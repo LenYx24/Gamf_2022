@@ -24,7 +24,7 @@ namespace Fordulo2
           int n = int.Parse(num);
           if (n % 317 == 0) db++;
         }
-        Console.WriteLine($"a) {db} szam osztható 317-tel.");
+        Console.WriteLine($"a) {db} szám osztható 317-tel.");
       }
       public static void EndingDevision() {
         int db = 0;
@@ -40,7 +40,7 @@ namespace Fordulo2
           }
         }
 
-        Console.WriteLine($"b) {db} olyan véges tizedes van ami osztható 612-vel.");
+        Console.WriteLine($"b) {db} olyan véges tizedes van, ami osztható 612-vel.");
       }
 
       public static void Repeating() {

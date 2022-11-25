@@ -75,7 +75,7 @@ namespace Fordulo2
                         isThere = true;
                     }
                 }
-                //PossibleMoves(arr);
+                //if (isThere) PossibleMoves(arr);
                 return isThere;
             }
             public void PossibleMoves(string[,] arr)
@@ -154,9 +154,12 @@ namespace Fordulo2
 
             //b
             int b = 0;
-            foreach(Table t in tables)
+            for (int i = 0; i < tables.Count; i++)
             {
-                if(t.StartingFieldPossibleAfterLastStep()) b++;
+                if(tables[i].StartingFieldPossibleAfterLastStep()) {
+                  //Console.WriteLine(i);
+                  b++;
+                }
             }
             Console.WriteLine($"b) {b} olyan sor van a fájlban, ahol az utolsó lépés után a kezdő mező egy újabb lólépéssel elérhető");
 

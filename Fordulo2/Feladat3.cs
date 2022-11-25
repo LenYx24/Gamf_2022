@@ -10,16 +10,15 @@ namespace Fordulo2
     internal class Feladat3
     {
       static List<string> nums = new();
-      static List<double> debug = new();
 
       public static void Start() {
         ReadIn();
-        Devidable();
+        Divisible();
         EndingDevision();
         Repeating();
       }
 
-      public static void Devidable() {
+      public static void Divisible() {
         int db = 0;
         foreach(string num in nums) {
           int n = int.Parse(num);

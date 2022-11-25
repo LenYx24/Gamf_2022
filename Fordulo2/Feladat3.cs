@@ -15,7 +15,6 @@ namespace Fordulo2
         ReadIn();
         Divisible();
         EndingDevision();
-            BProblemSecondSolution();
         Repeating();
       }
 
@@ -43,39 +42,16 @@ namespace Fordulo2
 
         Console.WriteLine($"b) {db} olyan véges tizedes van, ami osztható 612-vel.");
       }
-        public static void BProblemSecondSolution()
-        {
-            int db = 0;
-            foreach (string num in nums)
-            {
-                if (int.Parse(num) % 153 == 0 && int.Parse(num)%612 != 0)
-                {
-                    db++;
-                    Console.WriteLine($"{num}");
-                }
-            }
-            Console.WriteLine("b) "+db);
-        }
 
       public static void Repeating() {
         int n = int.Parse(nums[0]);
-<<<<<<< HEAD
         double rem = (n % 317)*10;
         string str = "";
 
         for (int i = 0; i < 1000; i++) {
           str += Math.Floor(rem / 317);
           rem = (rem % 317)*10;
-=======
-        double rem = n % 317 * 10;
-        StringBuilder st = new();
-
-        for (int i = 0; i < 1000; i++) {
-          st.Append(Math.Floor(rem / 317));
-          rem = rem % 317 * 10;
->>>>>>> 34e4b2cc417d52c3a72f348500141baf100d9173
         }
-        string str = st.ToString();
         string[] strs = str.Split(str.Substring(0, 4));
 
         Console.WriteLine($"c) {str.Substring(0, 4)}{strs[1]} a tizedes utáni szakasz.");
@@ -83,7 +59,7 @@ namespace Fordulo2
 
       public static void ReadIn() {
         try {
-          StreamReader r = new("../../../szamok2.txt");
+          StreamReader r = new("szamok2.txt");
 
           while (!r.EndOfStream) {
             nums.Add(r.ReadLine());

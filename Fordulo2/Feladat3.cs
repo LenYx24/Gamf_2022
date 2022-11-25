@@ -25,18 +25,48 @@ namespace Fordulo2
           int n = int.Parse(num);
           if (n % 317 == 0) db++;
         }
-        Console.WriteLine($"1) {db} szam osztható 317-tel.");
+        Console.WriteLine($"a) {db} szam osztható 317-tel.");
       }
       public static void EndingDevision() {
         int db = 0;
 
+        foreach (string num in nums) {
+          double n = double.Parse(num);
+          if (n % 612 == 0) continue;
+
+          double tizedes = n / (double)612;
+
+          if (tizedes.ToString().Length < 15) {
+            db++;
+          }
+        }
+
+        Console.WriteLine($"b) {db} olyan véges tizedes van ami osztható 612-vel.");
       }
 
       public static void Repeating() {
-        decimal n = int.Parse(nums[0]);
+        int n = int.Parse(nums[0]);
+        double rem = n % 317 < 317 ? ((n % 317)*10) : n % 317;
+        string str = "";
 
-        int rem = (int)n % 317 < 317 ? (((int)n % 317)*10) : (int)n % 317;
-        Console.WriteLine($"{rem}");
+        for (int i = 0; i < 1000; i++) {
+          str += Math.Floor(rem / 317);
+          rem = rem % 317 < 317 ? ((rem % 317)*10) : rem % 317;
+        }
+        string[] strs = str.Split(str.Substring(0, 4));
+
+        Console.WriteLine($"c) {str.Substring(0, 4)}{strs[1]} a tizedes utáni szakasz.");
+      }
+
+      public static string Remainder(int n) {
+        int rem = 0;
+        if (n % 317 < 317) {
+          rem = (n % 317)*10;
+        } else {
+          rem = n % 317;
+        }
+
+        return ((n-rem) / 317).ToString();
       }
 
       public static void ReadIn() {

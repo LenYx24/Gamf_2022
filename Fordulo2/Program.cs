@@ -6,7 +6,8 @@ namespace Fordulo2
     {
         static void Main(string[] args)
         {
-            Feladat2.Main2();
+            //Feladat2.Main2();
+            Feladat3.Start();
         }
     }
 }

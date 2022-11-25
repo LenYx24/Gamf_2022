@@ -58,17 +58,6 @@ namespace Fordulo2
         Console.WriteLine($"c) {str.Substring(0, 4)}{strs[1]} a tizedes utáni szakasz.");
       }
 
-      public static string Remainder(int n) {
-        int rem = 0;
-        if (n % 317 < 317) {
-          rem = (n % 317)*10;
-        } else {
-          rem = n % 317;
-        }
-
-        return ((n-rem) / 317).ToString();
-      }
-
       public static void ReadIn() {
         try {
           StreamReader r = new("szamok2.txt");

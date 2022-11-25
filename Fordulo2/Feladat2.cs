@@ -75,7 +75,7 @@ namespace Fordulo2
                         isThere = true;
                     }
                 }
-                PossibleMoves(arr);
+                //PossibleMoves(arr);
                 return isThere;
             }
             public void PossibleMoves(string[,] arr)
@@ -106,7 +106,7 @@ namespace Fordulo2
                     var st = stepints.OrderBy(x => x);
                     string k = "";
                     st.ToList().ForEach(x => k += $"{x} ");
-                    Console.WriteLine(k);
+                    //Console.WriteLine(k);
                 }
                 return false;
             }
@@ -137,7 +137,7 @@ namespace Fordulo2
         public static void Main2()
         {
             List<Table> tables = new();
-            StreamReader r = new("../../../lepesek.txt");
+            StreamReader r = new("lepesek.txt");
             while (!r.EndOfStream)
             {
                 tables.Add(new(r.ReadLine().Split(" ")));

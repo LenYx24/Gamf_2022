@@ -55,7 +55,7 @@ namespace Fordulo2
                     string num = i.ToString();
                     for (int k = 0; k < num.Length; k++)
                     {
-                        if (isPrime(int.Parse(num.Substring(k, 1)))) db++;
+                        if (isOneDigitPrime(int.Parse(num.Substring(k, 1)))) db++;
                     }
                 }
                 
@@ -65,10 +65,15 @@ namespace Fordulo2
 
         static bool isPrime(int num) {
           if (num <= 1) return false;
-          for (int i = 2; i < num / 2; i++) {
+          for (int i = 2; i <= num / 2; i++) {
             if (num % i == 0) return false;
           }
           return true;
+        }
+        static bool isOneDigitPrime(int num)
+        {
+            if (num == 2 || num == 3 || num == 5 || num == 7) return true;
+            return false;
         }
     }
 }

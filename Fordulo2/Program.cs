@@ -12,6 +12,7 @@ namespace Fordulo2
             //Feladat2.Main2();
             //Console.WriteLine("Feladat 3:");
             //Feladat3.Start();
+            
         }
     }
 }

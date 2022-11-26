@@ -110,6 +110,26 @@ namespace Fordulo2
                 }
                 return false;
             }
+            public bool EveryMoveInGoodOrder()
+            {
+                for (int k = 0; k < Steps.Count-1; k++)
+                {
+                    bool isLegalMove = false;
+                    for (int i = 0; i < HorseSteps.GetLength(0); i++)
+                    {
+                        int[] currentStep = Steps[k].AddStep(i).RowColumnArrAsIndices;
+                        if (currentStep[0] == -1 || currentStep[1] == -1) continue;
+                        if (String.Join("", Steps[k+1].RowColumnArrAsIndices) == String.Join("", currentStep))
+                        {
+                            isLegalMove = true;
+                            break;
+                        }
+                    }
+                    if(!isLegalMove)
+                        return false;
+                }
+                return true;
+            }
         }
         class Step
         {
@@ -165,10 +185,13 @@ namespace Fordulo2
 
             //c
             string codeRow = "";
-            foreach (Table t in tables)
+            for(int i = 0; i < tables.Count; i++)
             {
                 string res = "1";
-                if (t.AreThereStepsThatAreTheSame()) res = "0";
+                if (tables[i].AreThereStepsThatAreTheSame() || !tables[i].EveryMoveInGoodOrder())
+                {
+                    res = "0";
+                }
 
                 codeRow += res;
             }

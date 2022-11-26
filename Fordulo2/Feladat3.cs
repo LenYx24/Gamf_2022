@@ -59,7 +59,7 @@ namespace Fordulo2
 
       public static void ReadIn() {
         try {
-          StreamReader r = new("szamok2.txt");
+          StreamReader r = new("../../../szamok2.txt");
 
           while (!r.EndOfStream) {
             nums.Add(r.ReadLine());

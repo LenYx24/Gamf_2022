@@ -157,7 +157,7 @@ namespace Fordulo2
         public static void Main2()
         {
             List<Table> tables = new();
-            StreamReader r = new("../../../lepesek.txt");
+            StreamReader r = new("lepesek.txt"); // ../../../lepesek.txt
             while (!r.EndOfStream)
             {
                 tables.Add(new(r.ReadLine().Split(" ")));

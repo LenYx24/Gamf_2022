@@ -24,7 +24,7 @@ namespace Fordulo2
                 if (num < 10 && isPrime(num))
                 {
                     db++;
-                    Console.WriteLine(i);
+                    //Console.WriteLine(i); debug
                 }
         }
             return db;

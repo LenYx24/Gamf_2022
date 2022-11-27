@@ -1,4 +1,10 @@
 # gamf2022
+Ez egy random programozó verseny amiben csak azért indultunk mert nem volt más választásunk. Az of azt mondja meg kell nyerni szóval majd megpróbáljuk.
+Általában határidő előtt 1-2 órával nézzük át a feladatokat, hogy biztos jók-e, mivel mi programozók ilyeneket csinálunk.
+Szeretjük túlgondolni a feladatokat, utána jön Leny és mutat egy 30x egyszerűbbet.
+A hardcodeolást nem szeretjük, de valljuk be... Néha azért mégiscsak könnyebb.
+A csapatnevünk: "_using Math_" nincs pontosvessző. Csoda, hogy idén nem lettünk majdnem kizárva emiatt, mert már megint elfelejtettük, hogy mi is a csapatnév.
+A 3. fordulót egy szopás lesz megcsinálni a közeledő szalagavató miatt, de ez van.
 ## 1. forduló:
 Link: https://gamf.uni-neumann.hu/programozo-verseny-neumann-emlekere-1-fordulo/
 

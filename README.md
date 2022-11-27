@@ -3,7 +3,7 @@ Ez egy **random programozó verseny** amiben csak azért indultunk, mert nem vol
 Általában határidő előtt **__1-2 órával__** csináljuk meg/nézzük át a feladatokat, mert csak.
 Szeretjük túlgondolni a feladatokat, utána jön **Leny** és mutat egy 30/40x egyszerűbb megoldást.  
 A __hardcodeolást nem szeretjük__, mert törekedni kell a "dinamikus" kódra, ami többször felhasználható, de valljuk be... nem ebben a versenyben.  
-A csapatnevünk: "_using Math_" nincs pontosvessző. Csoda, hogy idén nem lettünk majdnem kizárva emiatt, mert már megint elfelejtettük, hogy mi is a csapatnév.  
+A csapatnevünk: "_using Math_", **"pontosvessző not included"**. Csoda, hogy idén nem lettünk majdnem kizárva emiatt, mert már megint elfelejtettük, hogy mi is a csapatnév.  
 A 3. fordulót egy szopás lesz megcsinálni a közeledő szalagavató miatt, de ez van.
 ## 1. forduló:
 Link: https://gamf.uni-neumann.hu/programozo-verseny-neumann-emlekere-1-fordulo/

@@ -1,4 +1,4 @@
-# gamf2022
+# GAMF vörsöny 2022
 Ez egy **random programozó verseny** amiben csak azért indultunk, mert nem volt más választásunk. Az of. azt mondja meg kell nyerni szóval majd megpróbáljuk.  
 Általában határidő előtt **__1-2 órával__** csináljuk meg/nézzük át a feladatokat, mert csak.
 Szeretjük túlgondolni a feladatokat, utána jön **Leny** és mutat egy 30/40x egyszerűbb megoldást.  

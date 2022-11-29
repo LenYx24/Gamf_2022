@@ -6,6 +6,7 @@ A __hardcodeolást nem szeretjük__, mert törekedni kell a "dinamikus" kódra, 
 A csapatnevünk: "_using Math_", **"pontosvessző not included"**. Csoda, hogy idén nem lettünk majdnem kizárva emiatt, mert már megint elfelejtettük, hogy mi is a csapatnév.
 Az eredeti ötlet "using mef" lett volna, csak of. is folyamatosan bezavart aztán így sikerült kijönni belőle. Egy botrány volt az egész jelentkezési procedúra, de sikeresen túlléptünk rajta.  
 A 3. fordulót egy szopás lesz megcsinálni a közeledő szalagavató miatt, de ez van.
+Igen
 ## 1. forduló:
 Link: https://gamf.uni-neumann.hu/programozo-verseny-neumann-emlekere-1-fordulo/
 

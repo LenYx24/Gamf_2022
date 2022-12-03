@@ -84,8 +84,8 @@ namespace Fordulo3
                 List<string> s2resze = s2.GetRange(i, k);
                 if(k < 5)
                 {
-                    Console.WriteLine(String.Join(';',s1resze));
-                    Console.WriteLine();
+                    //Console.WriteLine(String.Join(';',s1resze));
+                    //Console.WriteLine();
                 }
                 List<string> ered = s1resze.Intersect(s2resze).ToList();
                 if (ered.Count() == 1) return ered[0];
@@ -97,7 +97,7 @@ namespace Fordulo3
                     {
                         bg.Add(BigInteger.Parse(e));
                     }
-                    Console.WriteLine(string.Join(' ',ered));
+                    //Console.WriteLine(string.Join(' ',ered));
                     return bg.Max().ToString();
                 }
                 k++;
@@ -121,7 +121,7 @@ namespace Fordulo3
                 {
                     szorzat *= Convert.ToUInt32(szam.ToString());
                 }
-                Console.WriteLine(szorzat);
+                //Console.WriteLine(szorzat);
                 if (max < szorzat) max = szorzat;
             }
             return max;

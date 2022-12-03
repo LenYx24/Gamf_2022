@@ -40,16 +40,16 @@ Eredmények:
   a) 30  
   b) 45  
   c) 1356466876971608832807570977917981072555205047318611987381703470031545741324921  
-Elért pontszám: -/36 pont
+Elért pontszám: 36/36 pont
 
 ## 3. forduló:
 Link: https://gamf.uni-neumann.hu/programozo-verseny-neumann-emlekere-3-fordulo/  
 
 Eredmények:
 1. feladat:  
-  a)  
-  b)  
-  c)  
+  a) 5347  
+  b) 62  
+  c) 5;2308  
 2. feladat:  
   a)  
   b)  

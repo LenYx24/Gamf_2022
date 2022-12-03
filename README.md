@@ -59,4 +59,4 @@ Eredmények:
   b) 7928 
   c) 89579520 
 Elért pontszám: -/- pont 
-
+asd

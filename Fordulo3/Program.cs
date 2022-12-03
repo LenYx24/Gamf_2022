@@ -8,6 +8,7 @@ namespace Fordulo3
         {
             Feladat1.Start();
             Feladat2.Start();
+            Feladat2_magyar.Start();
             Feladat3.Start();
         }
     }

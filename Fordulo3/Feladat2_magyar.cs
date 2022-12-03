@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Fordulo3
 {
@@ -25,6 +26,14 @@ namespace Fordulo3
             this.X += Irany.X;
             this.Y += Irany.Y;
             this.Z += Irany.Z;
+        }
+        public bool Egyenlo(Koordinata a)
+        {
+            if (a.X == this.X && a.Y == this.Y && a.Z == this.Z)
+            {
+                return true;
+            }
+            return false;
         }
     }
 
@@ -60,14 +69,14 @@ namespace Fordulo3
 
             string[] Egyeni = Sor.Split(" ");
 
-            this.Hossz = int.Parse(Egyeni[0]);
+            Hossz = int.Parse(Egyeni[0]);
 
             int index = Pont.IndexOf(Egyeni[1]);
-            this.Kezdo_csucs = new(Csucs[index].X, Csucs[index].Y, Csucs[index].Z);
+            Kezdo_csucs = new(Csucs[index].X, Csucs[index].Y, Csucs[index].Z);
 
-            this.Irany = new Koordinata[this.Hossz];
-            for (int i = 0; i < this.Hossz; i++)
-                Irany[i] = Irany[int.Parse(Egyeni[2 + i])];
+            this.Irany = new Koordinata[Hossz];
+            for (int i = 0; i < Hossz; i++)
+                this.Irany[i] = Irany[int.Parse(Egyeni[2 + i])];
         }
     }
 
@@ -97,10 +106,10 @@ namespace Fordulo3
 
         public static bool Megvalosithato(AzUt item)
         {
-            Koordinata Jelenlegi_pont = item.Kezdo_csucs;
-            for (int i = 0; i < item.Irany.Length; i++)
+            Koordinata Jelenlegi_pont = new(item.Kezdo_csucs.X, item.Kezdo_csucs.Y, item.Kezdo_csucs.Z);
+            foreach(Koordinata irany in item.Irany)
             {
-                Jelenlegi_pont.BeallítasokXYZ(item.Irany[i]);
+                Jelenlegi_pont.BeallítasokXYZ(irany);
 
                 if (Jelenlegi_pont.X < 0 || Jelenlegi_pont.X > 1 || Jelenlegi_pont.Y < 0 || Jelenlegi_pont.Y > 1 || Jelenlegi_pont.Z < 0 || Jelenlegi_pont.Z > 1)
                     return false;
@@ -125,9 +134,9 @@ namespace Fordulo3
         {
             int darab = 0;
 
-            foreach (AzUt item in MindenUt)
+            foreach (AzUt Sor in MindenUt)
             {
-                List<Koordinata> Csucs = new() {
+                List<Koordinata> Csucsok = new() {
                     new(0, 0, 0), // A
                     new(1, 0, 0), // B
                     new(1, 1, 0), // C
@@ -137,27 +146,30 @@ namespace Fordulo3
                     new(1, 1, 1), // G
                     new(0, 1, 1)  // H
                 };
-                Koordinata c = new(item.Kezdo_csucs.X, item.Kezdo_csucs.Y, item.Kezdo_csucs.Z);
-
-                for (int i = 0; i < item.Irany.Length; i++)
+                Koordinata c = new(Sor.Kezdo_csucs.X, Sor.Kezdo_csucs.Y, Sor.Kezdo_csucs.Z);
+                foreach(Koordinata irany in Sor.Irany)
                 {
-                    int index = -1;
-                    for (int j = 0; j < Csucs.Count; j++)
+                    Koordinata cs1 = null;
+                    foreach(Koordinata k in Csucsok)
                     {
-                        if (Csucs[j].X == c.X && Csucs[j].Y == c.Y && Csucs[j].Z == c.Z)
-                        {
-                            index = j;
-                            break;
-                        }
+                        if (k.Egyenlo(c)) cs1 = k;
                     }
-                    if (index != -1)
-                        Csucs.RemoveAt(index);
+                    if (cs1 != null)
+                        Csucsok.Remove(cs1);
 
-                    c.BeallítasokXYZ(item.Irany[i]);
+                    c.BeallítasokXYZ(irany);
                 }
+                Koordinata cs = null;
+                foreach (Koordinata k in Csucsok)
+                {
+                    if (k.Egyenlo(c)) cs = k;
+                }
+                if (cs != null)
+                    Csucsok.Remove(cs);
 
-                if (Megvalosithato(item) && Csucs.Count == 0)
+                if (Megvalosithato(Sor) && Csucsok.Count == 0)
                     darab++;
+                
             }
 
             Console.WriteLine($"b) {darab}");
@@ -201,15 +213,19 @@ namespace Fordulo3
                 Koordinata c = new(item.Kezdo_csucs.X, item.Kezdo_csucs.Y, item.Kezdo_csucs.Z);
                 Koordinata p = new(0, 0, 0);
 
-                for (int i = 0; i < item.Irany.Length; i++)
+                foreach(Koordinata irany in item.Irany)
                 {
                     p = new(c.X, c.Y, c.Z);
-                    c.BeallítasokXYZ(item.Irany[i]);
-
+                    c.BeallítasokXYZ(irany);
                     int index = -1;
                     for (int j = 0; j < Csucs1.Count; j++)
                     {
-                        if (((Csucs1[j].X == c.X && Csucs1[j].Y == c.Y && Csucs1[j].Z == c.Z) && (Csucs2[j].X == p.X && Csucs2[j].Y == p.Y && Csucs2[j].Z == p.Z)) || ((Csucs2[j].X == c.X && Csucs2[j].Y == c.Y && Csucs2[j].Z == c.Z) && (Csucs1[j].X == p.X && Csucs1[j].Y == p.Y && Csucs1[j].Z == p.Z)))
+                        if (Csucs1[j].Egyenlo(c)
+                            && Csucs2[j].Egyenlo(p)
+                            ||
+                            Csucs1[j].Egyenlo(p)
+                            && Csucs2[j].Egyenlo(c)
+                            )
                         {
                             index = j;
                             break;

@@ -40,17 +40,19 @@ namespace Fordulo3
         }
       }
       Console.WriteLine($"a) {diffwords.Count} különböző szó van a szövegben");
+            if (diffwords.Contains(" ")) Console.WriteLine("VAN BENNE ÜRES");
     }
 
     static void ValVel() {
       int db = 0;
-      foreach (string line in lines) {
-        string[] words = line.Split(' ');
-        foreach (string word in words) {
-          if (word.EndsWith("VAL") || word.EndsWith("VEL")) db++;
-        }
-      }
-      Console.WriteLine($"b) {db} db szó végződik a val/vel raggal.");
+            foreach (string word in diffwords)
+            {
+                if (word.EndsWith("VAL") || word.EndsWith("VEL") && word.Length > 3)
+                {
+                    db++;
+                }
+            }
+            Console.WriteLine($"b) {db} db szó végződik a val/vel raggal.");
     }
 
     static Dictionary<int, int> wordlen = new();

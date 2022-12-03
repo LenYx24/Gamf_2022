@@ -58,4 +58,4 @@ Eredmények:
   a) 2380
   b) 7928
   c) 89579520
-Elért pontszám: -/- pont
+  Elért pontszám: -/- pont

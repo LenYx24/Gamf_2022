@@ -67,7 +67,7 @@ namespace Fordulo3
             List<string> ered = new();
             for (int i = f.Length; i > 0; i--)
             {
-                for (int j = 0; j <= f.Count() - i; j++)
+                for (int j = 0; j <= f.Length - i; j++)
                 {
                     string szam = f.Substring(j, i);
                     ered.Add(szam);
@@ -80,16 +80,15 @@ namespace Fordulo3
             List<string> s1 = osszesKepezhetoSzam(f1);
             List<string> s2 = osszesKepezhetoSzam(f2);
             int k = 1;
-            for (int i = 0; i < s1.Count; i += k-1)
+            for (int i = 0; i <= s1.Count; i += k-1)
             {
                 List<string> s1resze = s1.GetRange(i, k);
                 List<string> s2resze = s2.GetRange(i, k);
-                if(k < 5)
-                {
-                    //Console.WriteLine(String.Join(';',s1resze));
-                    //Console.WriteLine();
-                }
+                //Console.WriteLine(String.Join(';', s1resze));
+                //Console.WriteLine(String.Join(';', s2resze));
+                //Console.WriteLine();
                 List<string> ered = s1resze.Intersect(s2resze).ToList();
+
                 if (ered.Count == 1) return ered[0];
                 else if (ered.Count > 1)
                 {
@@ -99,7 +98,9 @@ namespace Fordulo3
                     {
                         bg.Add(BigInteger.Parse(e));
                     }
-                    //Console.WriteLine(string.Join(' ',ered));
+                    Console.WriteLine(String.Join(';', s1resze));
+                    Console.WriteLine(String.Join(';', s2resze));
+                    Console.WriteLine(string.Join(' ', ered));
                     return bg.Max().ToString();
                 }
                 k++;

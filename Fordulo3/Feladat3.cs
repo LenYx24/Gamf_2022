@@ -32,13 +32,15 @@ namespace Fordulo3
             }
             Console.WriteLine("a) 1. eset: " + f1);
             f1 = 1;
-            foreach (int k in nemSzerepelAFajl1ben) f1 = f1 * k;
-            foreach (int k in nemSzerepelAFajl2ben) f1 = f1 * k;
+            foreach (int k in nemSzerepelAFajl1ben) f1 *= k;
+            foreach (int k in nemSzerepelAFajl2ben) f1 *= k;
+            Console.WriteLine(String.Join(' ',nemSzerepelAFajl1ben));
+            Console.WriteLine(String.Join(' ',nemSzerepelAFajl2ben));
             Console.WriteLine("a) 2. eset: " + f1);
             // b) rész
             string b = bfeladat(fajl1, fajl2);
             Console.WriteLine("b) " + b);
-            string tesztb = bfeladat("17259", "85239");
+            string tesztb = bfeladat("55555", "50055");
             Console.WriteLine("b) " + tesztb);
 
             // c) rész
@@ -53,7 +55,7 @@ namespace Fordulo3
         {
             List<int> ered = new();
             for (int i = 10; i < 20; i++) ered.Add(i);
-            for (int i = 0; i < f.Count() - 1; i++)
+            for (int i = 0; i < f.Length - 1; i++)
             {
                 int szam = Convert.ToInt32(f.Substring(i, 2));
                 if (10 <= szam && szam < 20 && ered.Contains(szam)) ered.Remove(szam);
@@ -63,7 +65,7 @@ namespace Fordulo3
         static List<string> osszesKepezhetoSzam(string f)
         {
             List<string> ered = new();
-            for (int i = f.Count(); i > 0; i--)
+            for (int i = f.Length; i > 0; i--)
             {
                 for (int j = 0; j <= f.Count() - i; j++)
                 {
@@ -78,7 +80,7 @@ namespace Fordulo3
             List<string> s1 = osszesKepezhetoSzam(f1);
             List<string> s2 = osszesKepezhetoSzam(f2);
             int k = 1;
-            for (int i = 0; i < s1.Count(); i += k-1)
+            for (int i = 0; i < s1.Count; i += k-1)
             {
                 List<string> s1resze = s1.GetRange(i, k);
                 List<string> s2resze = s2.GetRange(i, k);
@@ -88,8 +90,8 @@ namespace Fordulo3
                     //Console.WriteLine();
                 }
                 List<string> ered = s1resze.Intersect(s2resze).ToList();
-                if (ered.Count() == 1) return ered[0];
-                else if (ered.Count() > 1)
+                if (ered.Count == 1) return ered[0];
+                else if (ered.Count > 1)
                 {
                     // a nagyobb számot visszaadni
                     List<BigInteger> bg = new();
@@ -107,7 +109,8 @@ namespace Fordulo3
         static uint cfeladat(string f)
         {
             uint max = 1;
-            for(int i = 0; i < f.Count() - 9; i++)
+            string sor = f.Substring(0, 10);
+            for(int i = 0; i < f.Length - 9; i++)
             {
                 string k = f.Substring(i, 10);
                 int ind = k.IndexOf('0');
@@ -122,8 +125,13 @@ namespace Fordulo3
                     szorzat *= Convert.ToUInt32(szam.ToString());
                 }
                 //Console.WriteLine(szorzat);
-                if (max < szorzat) max = szorzat;
+                if (max < szorzat)
+                {
+                    sor = k;
+                    max = szorzat;
+                }
             }
+            Console.WriteLine(sor);
             return max;
         }
     }

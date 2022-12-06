@@ -58,4 +58,7 @@ Eredmények:
   a) 2380
   b) 7928
   c) 89579520
-Elért pontszám: -/- pont 
+Elért pontszám: 37/37 pont  
+<hr>
+
+# Összesített pontszám: 102/102
